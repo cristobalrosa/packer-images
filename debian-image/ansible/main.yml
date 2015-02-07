@@ -1,0 +1,14 @@
+# Ansible bootstrap playbook
+# To check the playbook without executing it run
+# ansible-playbook -C ansible/main.yml  --connection=local
+
+---
+- hosts: all
+  tasks:
+  - name: Install apache2 and PHP modules
+    apt:
+      pkg: "{{ item }}"
+    with_items:
+      - apache2
+      - libapache2-mod-php5
+      - apache2-utils
